@@ -116,11 +116,17 @@ def spoiler(macro, environ):
     """Macro for spoiler. Showing and hiding it is done via javascript."""
     return tag.div(macro.parsed_body(), class_='spoiler')
 
-def ip(macro, environ):
+def ip(macro, environ, linkurl=None, linktext=None):
     """Macro for the virtual machine's ip."""
     ip = environ.get('ip')
     if not ip:
         ip = '127.0.0.1'
+
+    if linkurl:
+        if not linktext:
+            linktext = ip
+        return tag.a(linktext.format(ip=ip), href=linkurl.format(ip=ip))
+    
     return tag.span(ip, class_='ip')
 
 def code(macro, environ, lang='text', linenos=False):
