@@ -30,6 +30,7 @@
 {% else %}
     <li><a href="{% url 'django.contrib.auth.views.login' %}">{% trans "Login" %}</a></li>
     <li><a href="{% url 'registration.registration' %}">{% trans "Register" %}</a></li>
+    <li><a href="{% url 'django.contrib.auth.views.password_reset' %}">{% trans "Reset password" %}</a></li>
 {% endif %}
 </ul>
 </div>
